@@ -1,0 +1,179 @@
+.book-detail{
+    display:flex;
+}
+
+.img-detail{
+    width:500px;
+    height: 400px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border: solid 1px var(--border-color);
+}
+
+.img-detail img{
+    width:300px;
+    height:300px;
+}
+
+.book-info{
+    width:500px;
+    margin-left: 50px;
+}
+
+.book-name{
+    font-size:3rem;
+}
+
+.book-name h4{
+    margin:0;
+}
+
+.book-author,.publisher{
+    font-size:1.2rem;
+}
+
+.book-title{
+    font-size:1.5rem;
+    font-weight:300;
+}
+
+.book-price{
+    display:flex;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.real-price{
+    font-size:3rem;
+    color:#c01508;
+    padding-right: 5px;
+}
+
+.real-price p{
+    margin: 0;
+    font-weight: 700;
+}
+
+.published-price{
+    font-size:1.8rem;
+    padding-left: 5px;
+    text-decoration: line-through;
+}
+
+.published-price p{
+    margin: 0;
+}
+
+.book-status{
+    font-size:1.5rem;
+}
+
+.books-amout{
+    font-size:1.5rem;
+}
+
+.books-amout input{
+    width: 50px;
+    text-align: center;
+}
+
+.add-cart_buy-now{
+    margin-top: 50px;
+    padding:0;
+}
+
+.add-cart ,.buy-now{
+        display: inline-block;
+        padding: 10px;
+        font-size:2rem;
+        background-color:var(--primary-color);
+        border-radius:10px;
+        color:var(--white-color);
+        cursor: pointer;
+}
+
+.buy-now{
+    background-color: #28a745;
+}
+
+.add-cart:hover,.buy-now:hover{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.book-description_comment{
+    width:800px;
+    margin-top: 40px;
+}
+
+
+.item-list{
+    margin:0;
+    padding:0;
+    display:flex;
+}
+
+.item{
+    font-size: 2.5rem;
+    font-weight:200;
+    padding:5px 15px;
+    cursor: pointer;
+    border:solid 1px transparent;
+}
+
+.item:hover{
+    border:solid 1px #dee2e6;
+}
+
+.active-item{
+    border:solid 1px #dee2e6;;
+    border-top: solid 4px var(--primary-color);
+    font-weight:300;
+}
+
+.active-item:hover{
+    border:solid 1px #dee2e6;;
+    border-top: solid 4px var(--primary-color);
+    font-weight:300;
+}
+
+.book-description{
+    font-size:1.8rem;
+    font-weight:300;
+}
+
+.list-comments{
+    width:400px;
+}
+
+.comment{
+    /* width:100%; */
+    margin-top:20px;
+    padding: 0 20px;
+    background-color:#f0f2f5;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.comment-header{
+    display:flex;
+    align-items:center;
+    
+}
+
+.comment-header h3{
+    font-size:1.5rem;
+    margin: 0;
+    padding-right: 10px;
+}
+
+.comment-header span{
+    padding-left:10px;
+    font-size:1.5rem;
+    font-style: italic;
+    font-weight:300;
+}
+
+.comment p{
+    font-size:1.5rem;
+}

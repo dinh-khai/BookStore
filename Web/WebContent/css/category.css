@@ -1,0 +1,157 @@
+.category {
+	position: relative;
+	cursor: pointer;
+	height: 100%;
+	padding: 5px 8px;
+	width: auto;
+	background-color: rgb(24, 109, 189);
+}
+
+.category-list {
+	position: absolute;
+	top: 100%;
+	width: 100%;
+	left: 0;
+	animation: menu ease-in 0.2s;
+	transform-origin: top;
+	z-index: 2;
+	background-color: var(--white-color);
+	padding:0;
+	margin-top:0;
+	border:solid 1px var(--border-color);
+}
+
+@
+keyframes menu {from { transform:scaleY(0);
+	
+}
+
+to {
+	transform: scaleY(1);
+}
+
+}
+.breadcrumb {
+	display: flex;
+	align-items: center;
+	height: 40px;
+}
+
+.breadcrumb * {
+	font-size: 1.2rem;
+	color: var(- -text-color);
+	padding: 0 5px;
+}
+
+.breadcrumb i {
+	font-size: 1rem;
+	transform: translateY(-15%);
+}
+
+.breadcrumb a:first-child {
+	padding-left: 0;
+}
+
+.books-sort {
+	display: flex;
+	align-items: center;
+	padding: 15px 0;
+}
+
+.books-sort * {
+	padding: 0 5px;
+	font-size: 1.5rem;
+}
+
+.books-sort-title {
+	margin: 0;
+	padding-left: 0;
+}
+
+.sort{
+    position: relative;
+    border: solid 1px var(--border-color);
+    padding:5px 0;
+}
+
+
+.choose-sort{
+    cursor: pointer;
+}
+
+.name-sort{
+    display: inline-block;
+}
+
+.sort__list{
+    position: absolute;
+    background-color:white;
+    width: calc(100% + 2px);
+    border: solid 1px var(--border-color);
+    z-index: 100;
+    top: 100%;
+    border-top: none;
+    left: 0;
+    margin:0;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin-left: -1px; ;
+    padding:0;
+}
+
+.sort__list-item{
+    padding : 5px 0;
+    padding-left: 10px;
+    width:100%;
+    border-bottom:solid 1px var(--border-color) ;
+    cursor: pointer;
+}
+
+.name-sort{
+    width:100px;
+}
+
+.sort__list-item:last-child{
+    border-bottom:none;
+}
+
+.sort__list-item:hover{
+    background-color:var(--primary-color);
+    color:white;
+}
+
+.list-book {
+	padding: 0;
+}
+
+.page-bar {
+	margin-top: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.page {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0;
+}
+
+.page-item{
+	cursor:pointer;
+}
+
+.icon-page, .page-item {
+	border: solid 1px #dbdbdb;
+	padding: 10px;
+	margin: 0 5px;
+	border-radius: 3px;
+	font-size: 1.5rem;
+}
+
+.icon-page:hover, .page-item:hover {
+	background-color: var(--primary-color);
+	color: var(--white-color);
+}
+

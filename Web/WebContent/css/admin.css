@@ -1,0 +1,96 @@
+.admin{
+    margin-top:20px;
+}
+.admin-title{
+    font-size:2rem;
+}
+
+.info_name{
+    padding:0;
+}
+
+.info_name-item{
+    display:inline-block;
+    font-size:1.8rem;
+}
+
+.list-products{
+    font-size:1.8rem;
+    border: solid 1px var(--border-color);
+}
+
+th,td{
+    font-size:1.5rem;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.action-item{
+    padding:5px 10px;
+    color: white;
+    border-radius: 5px;
+}
+
+.action-item:hover{
+    opacity:0.6;
+}
+
+.action-item:first-child{
+    background-color:#faa607;
+}
+
+.action-item:last-child{
+    background-color:#c21514;
+}
+
+.add-product{
+    margin-top:20px;
+}
+
+.btn-add{
+    font-size:1.6rem;
+    background-color:#0e7c13;
+    padding:10px 5px;
+    border:none;
+    color: white;
+    border-radius:5px;
+}
+
+.add-name{
+    display:flex;
+    padding:10px 0;
+    font-size:1.6rem;
+    align-items:center;
+}
+
+.add-name label{
+   min-width: 200px;
+}
+
+.add-name input{
+    height:40px;
+    min-width:300px;
+    outline:none;
+    padding:0 5px;
+}
+
+.add-name textarea{
+    min-width:300px;
+    height:70px;
+    outline:none;
+}
+
+.add-name select{
+    outline:none;
+}
+
+.add{
+    font-size:1.4rem;
+    background-color:var(--primary-color);
+    border-radius:5px ;
+    padding:5px;
+    border: none;
+    color: white;
+    margin-top: 10px;
+
+}
