@@ -35,7 +35,7 @@
 			</div>
 
 			<!-- login -->
-			<form class="login-form" method="post" action="loginControl">
+			<form class="login-form">
 				<input type="text" class="login-input login-username" value="${user}" name="userName" placeholder="Tên đăng nhập">
 				<p class="err err-log hide err-loginu">Vui lòng nhập tên đăng nhập</p>
 				<br>
@@ -59,22 +59,22 @@
 			<form class="register-form hide">
 				<input type="text" class="register-input register-username"
 					placeholder="Tên đăng nhập">
-				<p class="err hide  err-username "></p>
-				<p class="err hide  err-username2 "></p>
+				<p class="err hide  err-username ">Vui lòng nhập tên đăng nhập</p>
+				<p class="err hide  err-username2 ">Tên đăng nhập bị trùng</p>
 				<br> <br> <input type="text"
 					class="register-input register-fullname" placeholder="Họ tên">
-				<p class="err hide err-fullname "></p>
+				<p class="err hide err-fullname ">Vui lòng nhập họ tên</p>
 				<br> <br> <input type="text"
 					class="register-input register-email" placeholder="email">
-				<p class="err hide err-email "></p>
-				<p class="err hide err-email2"></p>
+				<p class="err hide err-email ">Vui lòng nhập email</p>
+				<p class="err hide err-email2">Email không hợp lệ : Example@gmail.com</p>
 				<br> <br> <input type="password"
 					class="register-input register-pass" placeholder="Mật khẩu">
-				<p class="err hide err-pass "></p>
+				<p class="err hide err-pass ">Vui lòng nhập mật khẩu</p>
 				<br> <br> <input type="password"
 					class="register-input register-repass"
 					placeholder="Nhập lại mật khẩu">
-				<p class="err hide err-repass "></p>
+				<p class="err hide err-repass ">Mật khẩu không trùng khớp</p>
 				<br> <br>
 
 				<div class="btn-register">

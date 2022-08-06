@@ -249,6 +249,8 @@
 				},
 			})
 		}
+		
+		cons
 
 		var choose = document.querySelector(".choose-sort")
 		var sortList = document.querySelector(".sort__list")

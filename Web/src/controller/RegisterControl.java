@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.UserDao;
+import entity.User;
 
 /**
  * Servlet implementation class RegisterControl
@@ -36,6 +39,7 @@ public class RegisterControl extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		PrintWriter out=response.getWriter();	
 		String userName=request.getParameter("userName");
 		String password=request.getParameter("password");
 		String email=request.getParameter("email");
@@ -43,10 +47,16 @@ public class RegisterControl extends HttpServlet {
 		String admin=request.getParameter("isAdmin");
 		boolean isAdmin=Boolean.parseBoolean(admin);
 		UserDao dao=new UserDao();
+		User user=dao.getUserByuserName(userName);
+		if(user!=null) {
+			out.println(0);
+			return;
+		}
+		out.println(1);
 		response.setCharacterEncoding("UTF-8");
-			long millis=System.currentTimeMillis();   
-			java.sql.Date date=new java.sql.Date(millis); 
-			dao.saveUser(userName, fullName, email, password, date, isAdmin);
+		long millis=System.currentTimeMillis();   
+		java.sql.Date date=new java.sql.Date(millis);
+		dao.saveUser(userName, fullName, email, password, date, isAdmin);
 	}
 
 }

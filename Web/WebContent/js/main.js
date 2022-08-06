@@ -42,6 +42,7 @@ var btnLogin = document.querySelector('.btn-login button')
 
 var close = document.querySelector('.close');
 
+
 function render() {
 	function addHide(param1, param2, parentParam1, parentParam2) {
 		param1.classList.remove("hide")
@@ -69,13 +70,13 @@ function render() {
 		}
 		
 		if(close!=null){
-		close.onclick = function() {
+			close.onclick = function() {
 			loginWrapper.classList.add('hide')
 		}
 		}
 		
 		if(loginTitle!=null){
-		loginTitle.onclick = function() {
+			loginTitle.onclick = function() {
 			addHide(loginTitle, registerTitle, loginForm, registerForm);
 		}
 		}
@@ -87,111 +88,55 @@ function render() {
 		}
 	}
 
-	// check form register
-	function handleCheck() {
-		var errs = document.querySelectorAll('.err.hide')
-		var errsLog = document.querySelectorAll(".err-log.hide")
-		var textErrUserName = 'Vui lòng nhập tên đăng nhập'
-		var textErrFullName = 'Vui  lòng nhập họ và tên'
-		var textErrEmail = 'Vui  lòng nhập email'
-		var textErrEmail2 = 'Hay nhap dia chi email hop le : Example@gmail.com'
-		var textErrPass = 'Vui lòng nhập mật khẩu'
-		var textErrRepass = 'Mật khẩu không trùng khớp'
-		function checkEmpty(param) {
-			if (param.value.trim() !== "") {
-				return true;
-			} else {
-				return false
-			}
-		}
-
-		function checkSamePass(pass, rePass) {
-			if (pass === rePass) {
-				return true;
-			} else {
-				return false;
-			}
-		}
-
-		function checkRegis(param, errParam, textErr) {
-			if (param.value.trim() == "") {
-				errParam.innerText = textErr
-				errParam.classList.remove("hide")
-			} else {
-				errParam.classList.add("hide")
-			}
-		}
-
-		function checkEmail(email, err, textErr) {
-			var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-			if (!filter.test(email.value.trim())) {
-				err.innerText = textErr;
-				err.classList.remove("hide")
-				email.focus;
-				return false;
-			} else {
-				err.classList.add("hide")
-			}
-		}
-
-		function checkUserName(username, errParam) {
-			$.ajax({
-				url : '/Web/checkUserControl',
-				type : 'POST',
-				data : {
-					userName : username
-				},
-
-				success : function(data) {
-					var d = Number(data)
-					if (d === 0) {
-						errParam.innerText = "Tên đăng nhập bị trùng"
-						errParam.classList.remove("hide")
-						return false;
-					} else if (d === 1) {
-						errParam.classList.add("hide")
-						return true;
-					}
-				},
-			})
-		}
-
-		userNameRegis.onblur = function() {
-			checkRegis(userNameRegis, errUserNameRegis, textErrUserName)
-			checkUserName(userNameRegis.value, errUserNameRegis2)
-		}
-
-		fullNameRes.onblur = function() {
-			checkRegis(fullNameRes, errFullNameRes, textErrFullName)
-		}
-
-		emailRes.onblur = function() {
-			checkRegis(emailRes, errEmailRes, textErrEmail2)
-			checkEmail(emailRes, errEmailRes, textErrEmail2)
-		}
-
-		passRes.onblur = function() {
-			checkRegis(passRes, errPassRes, textErrPass)
-		}
-
-		rePassRes.onblur = function() {
-			checkRegis(rePassRes, errRePassRes, textErrRepass)
-			if (checkSamePass(passRes.value, rePassRes.value) === false) {
-				errRePassRes.classList.remove("hide")
-				errRePassRes.innerText = textErrRepass
-			} else {
-				errRePassRes.classList.add("hide")
-			}
-		}
-
+	function handleCheck(){
+		
+		// check form register
+		var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;	
+		
 		btnRes.onclick = function() {
-			console.log("khaidz")
-			checkUserName(userNameRegis.value, errUserNameRegis2)
-			if (checkEmpty(userNameRegis) && checkEmpty(fullNameRes)
-					&& checkEmpty(emailRes) && checkEmpty(passRes)
-					&& checkEmpty(rePassRes)
-					&& checkSamePass(passRes.value, rePassRes.value)
-					) {
+			if(!userNameRegis.value.trim()){
+				userNameRegis.focus();
+				errUserNameRegis.classList.remove('hide');
+				return;
+			}
+			errUserNameRegis.classList.add('hide');		
+			
+			if(!fullNameRes.value.trim()){
+				errFullNameRes.classList.remove('hide');
+				fullNameRes.focus();
+				return;
+			}
+			errFullNameRes.classList.add('hide');
+			
+			if(!emailRes.value.trim()){
+				errEmailRes.classList.remove('hide');
+				emailRes.focus();
+				return;
+			}
+			
+			errEmailRes.classList.add('hide');
+			
+			if(!filter.test(emailRes.value.trim())){
+				errEmailRes2.classList.remove('hide');
+				return;
+			}
+			
+			errEmailRes2.classList.add('hide');
+			
+			if(!passRes.value.trim()){
+				errPassRes.classList.remove('hide');
+				passRes.focus();
+				return;
+			}
+			
+			errPassRes.classList.add('hide');
+			
+			if(rePassRes.value.trim()!==passRes.value.trim()){
+				errRePassRes.classList.remove('hide');
+				return;
+			}
+			
+			errRePassRes.classList.add('hide');
 				$.ajax({
 					url : '/Web/registerControl',
 					type : 'POST',
@@ -203,72 +148,63 @@ function render() {
 						isAdmin : false,
 					},
 
-					success : function(data) {
-						addHide(loginTitle, registerTitle, loginForm,
-								registerForm);
-						alert("Đăng ký tài khoản thành công")
+					success : function(data) {		
+						if(Number(data) === 0){
+							console.log('ok')
+							errUserNameRegis2.classList.remove('hide');
+						}
+						else{
+							errUserNameRegis2.classList.add('hide');
+							alert('Đăng ký tài khoản thành công')
+							userNameRegis.value='';
+							fullNameRes.value='';
+							emailRes.value=''; 
+							passRes.value='';
+							rePassRes.value='';
+//							loginWrapper.classList.remove('hide')
+							addHide(loginTitle, registerTitle, loginForm, registerForm);	
+						}
 					},
 				})
-			} else {
-				checkRegis(userNameRegis, errUserNameRegis, textErrUserName);
-				checkUserName(userNameRegis.value, errUserNameRegis2);
-				checkRegis(fullNameRes, errFullNameRes, textErrFullName);
-				checkRegis(emailRes, errEmailRes, textErrEmail2);
-				checkEmail(emailRes, errEmailRes, textErrEmail2);
-				checkRegis(passRes, errPassRes, textErrPass);
-				checkRegis(rePassRes, errRePassRes, textErrRepass);
+		}
 
-			}
-		}
-		
-
-		// check login
-		function checkLogin(param, errParam) {
-			if (param.value.trim() == "") {
-				errParam.classList.remove("hide")
-			} else {
-				errParam.classList.add("hide")
-			}
-		}
-		userNameLogin.onblur = function() {
-			checkLogin(userNameLogin, errUserNameLogin)
-		}
-		passLogin.onblur = function() {
-			checkLogin(passLogin, errPassLogin)
-		}
-		
-		
-
-		var check = false
+//		login
 		function checkUser() {
 			$.ajax({
-				url : '/Web/checkLogin',
+				url : '/Web/loginControl',
 				type : 'POST',
 				data : {
 					userName : userNameLogin.value,
-					password : passLogin.value,
+					pass : passLogin.value,
 				},
 
 				success : function(data) {
 					ch = Number(data)
-					if (ch === 0) {
-						check = false
+					if (ch === 0) {			
 						errLogin.classList.remove("hide")
-						alert("thong tin tai khoan hoac mat khau khong chinh xac")
-					} else if(ch==1){
-						check = true
+					} else{					
 						errLogin.classList.add("hide")
-						btnLogin.type="submit"
+						window.location.reload();
 					}
 				},
 			})
 		}
 		btnLogin.onclick = function() {
-			checkLogin(userNameLogin, errUserNameLogin)
-			checkLogin(passLogin, errPassLogin)
+			if(!userNameLogin.value.trim()) {
+				userNameLogin.focus();
+				errUserNameLogin.classList.remove('hide');
+				return;
+			}
+			errUserNameLogin.classList.add('hide');
+			
+			if(!passLogin.value.trim()) {
+				passLogin.focus();
+				errPassLogin.classList.remove('hide');
+				return;
+			}
+			errPassLogin.classList.add('hide');
 			checkUser()
 		}
-
 	}
 
 	clickHide()
@@ -309,12 +245,3 @@ if (nUsers != null) {
 	})
 }
 
-/*var formatM=document.querySelectorAll(".format-money")
-console.log(formatM)
-function format(n, currency) {
-	  return currency + n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
-	}
-
-formatM.forEach(function(f,index){
-	format(Number(f.innerText), "đ")
-})*/

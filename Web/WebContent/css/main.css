@@ -57,6 +57,11 @@ header
     position: relative;
 }
 
+.header__introduce-element-items-user{
+	min-width:120px; 
+	text-align: center;
+}
+
 .login-item{
     cursor:pointer;
 }

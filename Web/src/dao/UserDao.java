@@ -63,7 +63,6 @@ public class UserDao {
 			ps.setBoolean(6, isAdmin);
 			ps.executeUpdate();
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
 		}
 	}
 	public static void main(String[] args) {

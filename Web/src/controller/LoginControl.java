@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -55,6 +57,12 @@ public class LoginControl extends HttpServlet {
 		
 		UserDao dao=new UserDao();
 		User user=dao.getUser(userName, password);
+		PrintWriter out=response.getWriter();
+		if(user==null) {
+			out.println(0);
+			return;
+		}
+		out.println(1);
 		HttpSession sess=request.getSession();
 		sess.setAttribute("user", user);
 		Cookie cookieUser=new Cookie("userName", userName);
